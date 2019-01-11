@@ -44,10 +44,11 @@
             <batch:tasklet allow-start-if-complete="false"
                            start-limit="1" task-executor="taskExecutor" throttle-limit="5">
                 <batch:chunk reader="userReader" writer="userWriter"
-                             processor="userProcessor" commit-interval="5" retry-limit="5">
+                             processor="userProcessor" commit-interval="5" retry-limit="10">
                     <batch:retryable-exception-classes>
                         <batch:include class="org.springframework.dao.DuplicateKeyException"/>
                         <batch:include class="java.sql.BatchUpdateException"/>
+                        <batch:include class="java.sql.SQLException"/>
                     </batch:retryable-exception-classes>
                 </batch:chunk>
             </batch:tasklet>
