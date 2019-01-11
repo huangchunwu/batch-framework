@@ -5,22 +5,22 @@ package com.hcw.core.batch;
  */
 public class Product
 {
-    private int id;
+    private String id;
     private String name;
     private String description;
-    private int quantity;
+    private String quantity;
     public Product() {
     }
-    public Product(int id, String name, String description, int quantity) {
+    public Product(String id, String name, String description, String quantity) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {
@@ -35,10 +35,10 @@ public class Product
     public void setDescription(String description) {
         this.description = description;
     }
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 }
