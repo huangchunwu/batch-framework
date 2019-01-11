@@ -16,11 +16,7 @@ import java.util.List;
 import static org.springframework.util.Assert.isTrue;
 import static org.springframework.util.Assert.notNull;
 
-/**
- * @author itmrchen
- * @date 2016/10/12
- * @time 13:19
- */
+
 
 public class MyBatchItemWriter<T> implements ItemWriter<T>, InitializingBean {
 

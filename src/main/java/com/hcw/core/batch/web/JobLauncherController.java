@@ -1,5 +1,6 @@
 package com.hcw.core.batch.web;
 
+import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -32,7 +33,7 @@ public class JobLauncherController {
         JobParameters jobParameters = bulidParameters(request);
         JobExecution result = jobLauncher.run(jobRegistry.getJob(jobName),
                 jobParameters);
-        //ExitStatus es = result.getExitStatus();
+        ExitStatus es = result.getExitStatus();
         return "ok";
 
 
