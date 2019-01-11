@@ -16,15 +16,15 @@
         <property name="lineMapper" ref="lineMapper"/>
         <property name="resource" value="classpath:message/batch-data-source.csv"/>
     </bean>
-
+    <!-- 将每行映射成对象 -->
     <bean id="lineMapper" class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
         <property name="lineTokenizer">
             <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-                <property name="delimiter" value=","/>
+                <property name="delimiter" value=","/><!-- 根据某种分隔符分割 -->
                 <property name="names" value="id,name" />
             </bean>
         </property>
-        <property name="fieldSetMapper">
+        <property name="fieldSetMapper"><!-- 将拆分后的字段映射成对象 -->
             <bean class="com.hcw.core.batch.UserFieldSetMapper" />
         </property>
     </bean>
