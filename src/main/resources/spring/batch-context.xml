@@ -7,16 +7,16 @@
     <!-- 内存仓库  -->
     <!--<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"/>-->
 
-    <!-- 数据库仓库  -->
-    <batch:job-repository id="jobRepository" data-source="dataRepDruidDataSource"
-                          isolation-level-for-create="SERIALIZABLE" transaction-manager="transactionManager"
-                          table-prefix="BATCH_" max-varchar-length="1000" />
+    <!--&lt;!&ndash; 数据库仓库  &ndash;&gt;-->
+    <!--<batch:job-repository id="jobRepository" data-source="dataRepDruidDataSource"-->
+                          <!--isolation-level-for-create="SERIALIZABLE" transaction-manager="transactionManager"-->
+                          <!--table-prefix="BATCH_" max-varchar-length="1000" />-->
 
-    <!-- 作业调度器，用来启动job,引用作业仓库 -->
-    <bean id="jobLauncher"
-          class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
-        <property name="jobRepository" ref="jobRepository"/>
-    </bean>
+    <!--&lt;!&ndash; 作业调度器，用来启动job,引用作业仓库 &ndash;&gt;-->
+    <!--<bean id="jobLauncher"-->
+          <!--class="org.springframework.batch.core.launch.support.SimpleJobLauncher">-->
+        <!--<property name="jobRepository" ref="jobRepository"/>-->
+    <!--</bean>-->
 
     <!-- 任务注册器 -->
     <!-- 所谓的“任务注册器（JobRegistry）”不是必须的（它的父接口是“任务定位器JobLocator”）， 但如果你想追踪哪些任务在当前的上下文中是有效的，那么它就很有用。同时对于在一个应用上下文中集中的收集在别处创建的任务也很有用（比如在下级上下文中）。
@@ -30,6 +30,7 @@
             class="org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor">
         <property name="jobRegistry" ref="jobRegistry"/>
     </bean>
+
 
 
 </beans>			

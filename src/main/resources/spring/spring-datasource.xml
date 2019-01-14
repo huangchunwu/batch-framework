@@ -4,7 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-
 	<!-- dtc数据源 -->
 	<bean id="dtcDruidDataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		  init-method="init" destroy-method="close">
@@ -61,6 +60,19 @@
 				  value="${jdbc.mysql.rep.connection.poolPreparedStatements}" />
 		<property name="maxPoolPreparedStatementPerConnectionSize"
 				  value="${jdbc.mysql.rep.connection.maxPoolPreparedStatementPerConnectionSize}" />
+	</bean>
+
+
+	<!-- writer sqlSessionFactory -->
+	<bean id="sqlSessionFactoryTo" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dtcDruidDataSource" />
+		<property name="mapperLocations"
+				  value="classpath*:mapper/UserToMapper.xml" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryTo"/>
+		<property name="basePackage" value="com.hcw.core.batch.dao" />
 	</bean>
 
 </beans>
